@@ -1,12 +1,9 @@
 package jjayojjayo.food;
 
-import java.util.List;
-
 public class Food{
 	private String name;
 	private int cookingTime;
 	private int exp;
-	public static List<Food> foodlist;
 	private int j;
 	
 	public Food(){};
