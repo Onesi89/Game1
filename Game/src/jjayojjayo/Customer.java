@@ -5,36 +5,32 @@ import java.util.Random;
 import jjayojjayo.food.Food;
 
 public class Customer extends Thread {
-	Food food;
-	Table table;
+	Food food; //주문한 음식
+	Table table; //주문번호 표시판
+	int w; //반복횟수.
 
-	Customer(int i, int j) {
+
+	Customer(Table table,int i,int w) {
 		this.setName(i + "번째 손님");
-		this.food = Food.foodlist.get(i);
+		this.food = Table.list.get(new Random().nextInt(Table.list.size()));
+		this.food.setJ(w); 
+		this.table = table;
 
 	}
 
 	@Override
 	public void run() {
-		
-		
-		Random r = new Random();
-		int number = r.nextInt(Table.list.size());
-
-		if (1 < Table.list.size()) {
-			for (int i = 0; i < Table.list.size(); i++) {
-				if (Table.list.get(number).equals(food)) {
-					
-					Table.list.remove(number);
-
-					System.out.println(this.getName() + "이 " +food.getName()+"먹었습니다.");
-
-				}
-			}
-
-		} else {
+		Delay.del(2500);
+		System.out.println("& "+getName()+"은 "+food.getName()+"가 먹고 싶다.");
+		Delay.del(2500);
+		try {
+			table.remove1(this);
+		} catch (InterruptedException e) {
+			System.out.println("인터럽트 오류");
 		}
-
-	
+		
 	}
+		
+		
+
 }
