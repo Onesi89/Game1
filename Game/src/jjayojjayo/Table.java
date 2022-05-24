@@ -20,6 +20,8 @@ public class Table {
 		
 	}
 	
+	sys
+	
 	
 	
 	//내가 조정해야할 부분 부분
