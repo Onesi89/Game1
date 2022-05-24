@@ -1,8 +1,8 @@
 package jjayojjayo;
 
 public class Delay {
-	public void del(long a) {
-	
+	public static void del(long a) {
+		try{Thread.sleep(a);}catch(InterruptedException e) {};
 	}
 
 }
