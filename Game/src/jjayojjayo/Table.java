@@ -1,5 +1,6 @@
 package jjayojjayo;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
@@ -17,10 +18,13 @@ public class Table {
 
 	
 	//처음에 주문할 수 있는 주문 리스트, static 필드로 초기화
-	static {
+	static {		
+		
 		level = 1;
 		exp = 0;
-		list.add(new Food("계란말이",1,1) {});
+		list = new ArrayList<Food>();
+		ready = new ArrayList<Food>();
+		list.add(new Food("계란말이",1,1) {});	
 		list.add(new Food("김치찌개",1,2) {});
 		list.add(new Food("된장찌개",1,3) {});
 		maxReady = 3;

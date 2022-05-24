@@ -8,7 +8,10 @@ public class Start {
 		Customer cus2 = new Customer(table,2,5);
 		Cook cook = new Cook(table);
 		
+		Delay.del(1000);
 		cook.start();
+		
+		Delay.del(1000);
 		cus1.start();
 		cus2.start();
 		

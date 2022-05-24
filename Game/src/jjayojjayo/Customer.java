@@ -1,7 +1,5 @@
 package jjayojjayo;
 
-import java.util.Random;
-
 import jjayojjayo.food.Food;
 
 public class Customer extends Thread {
