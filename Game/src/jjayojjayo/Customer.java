@@ -20,9 +20,8 @@ public class Customer extends Thread {
 
 	@Override
 	public void run() {
-		Delay.del(2500);
-		System.out.println("& "+getName()+"은 "+food.getName()+"가 먹고 싶다.");
-		Delay.del(2500);
+		Delay.del(4000);
+
 		try {
 			table.remove1(this);
 		} catch (InterruptedException e) {
