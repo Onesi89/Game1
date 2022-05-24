@@ -12,7 +12,7 @@ public class Cook extends Thread {
 		Delay.del(1000);
 		
 		try {
-			Table.add();
+			table.add();
 		} catch (InterruptedException e) {
 			System.out.println("오류가 났어요.");
 		}
