@@ -5,6 +5,8 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
+import javax.swing.JOptionPane;
+
 import jjayojjayo.food.Food;
 
 public class Table {
@@ -13,6 +15,7 @@ public class Table {
 	static public List<Food> list; // 만들 수 있는 음식 리스트
 	static public List<Food> ready; // 준비가 된 음식 리스트
 	static private int maxReady;
+	public int maxCustomerNumber = 3;
 	Integer key;
 
 	// 처음에 주문할 수 있는 주문 리스트, static 필드로 초기화
@@ -63,6 +66,7 @@ public class Table {
 
 		// 반복 문
 		while (true) {
+			Delay.del(2000);
 
 			// 준비된 음식이 없을 때 기다려라.
 			if (Table.ready.size() == 0) {
@@ -85,6 +89,7 @@ public class Table {
 						notifyAll();
 						Table.setExp(cus.food.getExp());
 						System.out.println("■ 경험치 " + cus.food.getExp() + " 를 획득했습니다.");
+						Start.customerList.remove(Start.customerList.indexOf(cus));
 						return;
 
 						// 준비된 음식과 내가 주문한 음식이 다르면 기다리자.
@@ -97,6 +102,8 @@ public class Table {
 				if (j == cus.w) {
 					System.out.println(cus.getName() + "님이 떠나갔습니다.");
 					Table.setExp(-3);
+					
+					Start.customerList.remove(Start.customerList.indexOf(cus));
 					return;
 				}
 				wait();
@@ -106,7 +113,29 @@ public class Table {
 	}
 
 	// 나의 캐릭터가 조정해야할 부분 부분
-	public synchronized void remove2() {
+	public void remove2() {
+		Delay.del(1000);
+
+		while (true) {
+
+			Delay.del(500);
+
+			String remove = JOptionPane.showInputDialog("숫자를 입력하세요.");
+			
+			synchronized (this) {
+				System.out.println(Table.ready.get(Integer.parseInt(remove)-1).getName() + "를 제거하였습니다.");
+				
+				Table.ready.remove(Integer.parseInt(remove)-1);
+				
+			
+				Table.show();
+				
+				notifyAll();
+				
+			}
+
+	
+		}
 
 	}
 
